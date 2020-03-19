@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Мои друзья".</title>
+</head>
+
+<body>
+  <h1>Привет, мир!</h1>
+  <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+  <script>
+    var arrFriends = ["Andi", "Sasha", "Vova"];
+    for (var i = 0; i < arrFriends.length; i++) {
+      $("body").append("<p>" + arrFriends[i] + " лучший!</p>");
+    };
+    for (var j = 1; j < 6; j++) {
+      var time = 1000;
+      time *= j;
+      // $("h1").text("Мои друзья").fadeOut(time).fadeIn(time);
+      $("h1").fadeTo(2000, 0.2);
+    }
+    // $("p").fadeOut(3000).delay(5000).fadeIn(3000);
+  </script>
+</body>
+
+</html>

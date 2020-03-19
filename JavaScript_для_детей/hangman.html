@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Виселица!</title>
+</head>
+
+<body>
+  <h1>Виселица!</h1>
+  <script>
+    // Создаем массив со словами
+    function pickWord() {
+      var words = [
+        "программа",
+        "макака",
+        "прекрасный",
+        "оладушек"
+      ];
+      return words[Math.floor(Math.random() * words.length)]
+    }
+    // Выбираем случайное слово
+    var word = pickWord();
+    // Создаем итоговый массив
+    var answerArray = setupAnswerArray(word);
+
+    function setupAnswerArray(word) {
+      var arr = [];
+      for (var i = 0; i < word.length; i++) {
+        arr[i] = "_";
+      }
+      return arr;
+    }
+    var remainingLetters = word.length;
+    // Игровой цикл
+    while (remainingLetters > 0) {
+      // Показываем состояние игры
+      function showPlayerProgress(answerArray) {
+        alert(answerArray.join(" "));
+      };
+      showPlayerProgress(answerArray);
+      // Запрашиваем вариант ответа
+      function getGuess() {
+        return prompt("Угадайте букву, или нажмите Отмена для выхода из игры.");
+      }
+      var guess = getGuess();
+      if (guess === null) {
+        // Выходим из игрового цикла
+        break;
+      } else if (guess.length !== 1) {
+        alert("Пожалуйста, введите одиночную букву.");
+      } else {
+        // Обновляем состояние игры
+        function updateGameState(guess, word,
+          answerArray) {
+          var answerLetters = 0;
+          for (var j = 0; j < word.length; j++) {
+            if (word[j] === guess) {
+              answerArray[j] = guess;
+              answerLetters++;
+            }
+          }
+          return answerLetters;
+        };
+        var correctGuesses = updateGameState(guess, word,
+          answerArray);
+        remainingLetters -= correctGuesses;
+      }
+      // Конец игрового цикла
+    }
+    // Отображаем ответ и поздравляем игрока
+    function showAnswerAndCongratulatePlayer(answerArray) {
+      alert(answerArray.join(" "));
+      alert("Отлично! Было загадано слово " + word);
+    };
+    showAnswerAndCongratulatePlayer(answerArray);
+  </script>
+</body>
+
+</html>

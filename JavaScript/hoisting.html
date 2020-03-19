@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>hoisting</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+        // var a = 10;
+        // function foo() {
+        //     var a = 14;
+        //     console.log(a);
+        // };
+        // foo();
+        // console.log(a);
+
+
+        // var a = 10;
+        // // var b;
+        // function foo() {
+        //     var b = 14;
+        // };
+        // foo();
+        // console.log(b);
+
+        // var a = 10;
+        // function foo(a) {
+        // console.log(a);
+        // };
+        // foo(11);
+        // console.log(a);
+
+        // JS, функция, замыкание ну ещё раз https://youtu.be/XjU86dV64UE?t=900
+
+        // var a = 10;
+        // function foo(a) {
+        //     a = 13;
+        //     console.log(a);
+        // }
+        // foo(11);
+        // console.log(a);
+
+
+        // var a = 10;
+        // function foo() {
+        //     a = 15;
+        //     console.log(a);
+        // }
+        // foo(11);
+        // console.log(a);
+
+
+        // function foo() {
+        //     a = 15;
+        //     console.log(a);
+        // }
+        // foo();
+        // console.log(a);
+
+        // var a = 10;
+        // function foo() {
+        //     var a = 20;
+        //     boo();
+        //     function boo() {
+        //         console.log(a);
+        //     };
+        // };
+        // foo();
+
+        // var a = 10;
+        // function foo() {
+        //     boo();
+        //     function boo() {
+        //         console.log(a);
+        //     };
+        // };
+        // foo(12);
+
+        // function sum(a) {
+        //     function sum2(b) {
+        //         return a + b;
+        //     };
+        // };
+        // var result = sum(10)(20);
+        // console.log(result);
+
+        // function sum(a) {
+        //     var a = 100;
+        //     function boo() {
+        //     };
+        //     return boo;
+        // };
+        // var result = sum();
+        // console.log(result);
+        
+    // function makeCounter() {
+    //     let count = 0;
+    //       return ++count;
+    //     //   return count++;
+    //   }
+    //   let counter = makeCounter();
+    //   console.log(counter);
+    </script>
+</body>
+
+</html>

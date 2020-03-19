@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Интерактивное программирование</title>
+</head>
+
+<body style="margin: 0">
+    <h1 id="heading" style="margin: 0">Привет, мир!</h1>
+    <script src="jquery-3.4.1.js"></script>
+    <script>
+        var leftOffset = 0;
+        var topOffset = 0;
+        var rightOffset = 200;
+        var bottomOffset = 200;
+        var moveHeading = function () {
+            $("#heading").offset({
+                left: leftOffset
+            });
+            leftOffset++;
+            if (leftOffset > 200) {
+                $("#heading").offset({
+                    left: 199,
+                    top: topOffset
+                });
+                topOffset++;
+            }
+            if (topOffset > 200) {
+                $("#heading").offset({
+                    top: bottomOffset,
+                    left: rightOffset
+                });
+                rightOffset--;
+            }
+            if (rightOffset < 2) {
+                $("#heading").offset({
+                    top: bottomOffset,
+                    left: 0
+                });
+                bottomOffset--;
+            }
+            if (bottomOffset < 2) {
+                $("#heading").offset({
+                    top: 0,
+                    left: 0
+                });
+            }
+        };
+        setInterval(moveHeading, 30);
+        var i = 0;
+        if (i < 9) {
+        $("h1").click(function (){
+            setInterval(moveHeading, 30-i);
+        });
+            i=i+3;
+        }
+        else if (i===9) {
+            $("h1").text("hello");
+        }
+    </script>
+</body>
+
+</html>
