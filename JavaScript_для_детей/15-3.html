@@ -2,12 +2,13 @@
 <html>
 
 <head>
-    <title>Keyboard input</title>
+    <meta charset="UTF-8">
+    <title>Мои друзья".</title>
 </head>
 
 <body>
     <canvas id="canvas" width="400" height="400"></canvas>
-    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script>
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
@@ -22,22 +23,12 @@
                 ctx.stroke();
             }
         };
-        var speeds = {
-            97: "1",
-            98: "2",
-            99: "3",
-            100: "4",
-            101: "5",
-            102: "6",
-            103: "7",
-            104: "8",
-            105: "9",
-        }
         // Конструктор Ball
         var Ball = function () {
-            this.speed = 5;
             this.x = width / 2;
             this.y = height / 2;
+            this.speed = 5;
+            this.radius = 10;
             this.xSpeed = this.speed;
             this.ySpeed = 0;
         };
@@ -46,26 +37,19 @@
             this.x += this.xSpeed;
             this.y += this.ySpeed;
             if (this.x < 0) {
-                this.x = width;
+                this.xSpeed = this.speed;
             } else if (this.x > width) {
-                this.x = 0;
+                this.xSpeed = -this.speed;
             } else if (this.y < 0) {
-                this.y = height;
+                this.ySpeed = this.speed;
             } else if (this.y > height) {
-                this.y = 0;
+                this.ySpeed = -this.speed;
             }
         };
         // Рисуем мяч в его текущей позиции
         Ball.prototype.draw = function () {
-            circle(this.x, this.y, 10, true);
+            circle(this.x, this.y, this.radius, true);
         };
-        // Ball.prototype.ok = function (value) {
-        //     if(value===undefined) {
-        //         this.speed = 1;
-        //     } else {
-        //         this.speed = value;
-        //     };
-        // }
         // Задаем направление движения по строке с названием действия
         Ball.prototype.setDirection = function (direction) {
             if (direction === "up") {
@@ -85,20 +69,58 @@
                 this.ySpeed = 0;
             }
         };
+        Ball.prototype.setSpeed = function (valSpeed, anySpeed) {
+            if (!(anySpeed === undefined)) {
+                this.speed += anySpeed;
+            } else if (!(valSpeed === undefined)) {
+                this.speed = valSpeed;
+            };
+
+
+        };
+        Ball.prototype.setRadius = function (anyRadius) {
+            if (!(anyRadius === undefined)) {
+                this.radius += anyRadius;
+            }
+        }
         // Создаем объект-мяч
         var ball = new Ball();
         // Объект для перевода кодов клавиш в названия действий
         var keyActions = {
-            32: "stop", // остановка
-            37: "left", // влево
-            38: "up", // вверх
-            39: "right", // вправо
-            40: "down" // вниз
+            " ": "stop", // остановка
+            ArrowLeft: "left", // влево
+            ArrowUp: "up", // вверх
+            ArrowRight: "right", // вправо
+            ArrowDown: "down" // вниз
+        };
+        let speeds = {
+            1: 1,
+            2: 2,
+            3: 3,
+            4: 4,
+            5: 5,
+            6: 6,
+            7: 7,
+            8: 8,
+            9: 9
+        };
+        let difSpeed = {
+            KeyZ: -1,
+            KeyX: 1
+        };
+        let difRadius = {
+            KeyC: -1,
+            KeyV: 1
         };
         // Обработчик события keydown, будет вызван при каждом нажатии
         // клавиши
         $("body").keydown(function (event) {
-            var direction = keyActions[event.keyCode];
+            let valSpeed = speeds[event.key];
+            let anySpeed = difSpeed[event.code];
+            var anyRadius = difRadius[event.code];
+            ball.setSpeed(valSpeed, anySpeed);
+            ball.setRadius(anyRadius);
+            var direction = keyActions[event.key];
             ball.setDirection(direction);
         });
         // Функция анимации, вызывается раз в 30 мс

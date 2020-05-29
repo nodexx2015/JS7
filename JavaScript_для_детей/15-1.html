@@ -2,12 +2,13 @@
 <html>
 
 <head>
-    <title>Keyboard input</title>
+    <meta charset="UTF-8">
+    <title>Мои друзья".</title>
 </head>
 
 <body>
     <canvas id="canvas" width="400" height="400"></canvas>
-    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script>
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
@@ -22,23 +23,11 @@
                 ctx.stroke();
             }
         };
-        var speeds = {
-            97: "1",
-            98: "2",
-            99: "3",
-            100: "4",
-            101: "5",
-            102: "6",
-            103: "7",
-            104: "8",
-            105: "9",
-        }
         // Конструктор Ball
         var Ball = function () {
-            this.speed = 5;
             this.x = width / 2;
             this.y = height / 2;
-            this.xSpeed = this.speed;
+            this.xSpeed = 5;
             this.ySpeed = 0;
         };
         // Обновляем позицию мяча соответственно его скорости
@@ -46,39 +35,32 @@
             this.x += this.xSpeed;
             this.y += this.ySpeed;
             if (this.x < 0) {
-                this.x = width;
+                this.xSpeed = 5;
             } else if (this.x > width) {
-                this.x = 0;
+                this.xSpeed = -5;
             } else if (this.y < 0) {
-                this.y = height;
+                this.ySpeed = 5;
             } else if (this.y > height) {
-                this.y = 0;
+                this.ySpeed = -5;
             }
         };
         // Рисуем мяч в его текущей позиции
         Ball.prototype.draw = function () {
             circle(this.x, this.y, 10, true);
         };
-        // Ball.prototype.ok = function (value) {
-        //     if(value===undefined) {
-        //         this.speed = 1;
-        //     } else {
-        //         this.speed = value;
-        //     };
-        // }
         // Задаем направление движения по строке с названием действия
         Ball.prototype.setDirection = function (direction) {
             if (direction === "up") {
                 this.xSpeed = 0;
-                this.ySpeed = -this.speed;
+                this.ySpeed = -5;
             } else if (direction === "down") {
                 this.xSpeed = 0;
-                this.ySpeed = this.speed;
+                this.ySpeed = 5;
             } else if (direction === "left") {
-                this.xSpeed = -this.speed;
+                this.xSpeed = -5;
                 this.ySpeed = 0;
             } else if (direction === "right") {
-                this.xSpeed = this.speed;
+                this.xSpeed = 5;
                 this.ySpeed = 0;
             } else if (direction === "stop") {
                 this.xSpeed = 0;
