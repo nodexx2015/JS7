@@ -1,16 +1,49 @@
 <script>
-    let Ball = function () {
-        this.speed = 1;
-        this.xSpeed = this.speed;
-    };
-    Ball.prototype.move = function () {
-        if(true) {
-            this.speed = 5;
-            // this.xSpeed = this.speed;
-        };
-    };
-    let ball = new Ball();
-    ball.move();
-    // ball.__proto__.move();
-    console.log(ball);
+    // let Ball = function () {
+    //     this.speed = 1;
+    //     this.xSpeed = this.speed;
+    // };
+    // Ball.prototype.move = function () {
+    //     if (true) {
+    //         this.speed = 5;
+    //         // this.xSpeed = this.speed;
+    //     };
+    // };
+    // let ball = new Ball();
+    // ball.move();
+    // // ball.__proto__.move();
+    // console.log(ball);
+
+    // //Почему в prototype не заносятся св-ва(переменные), а только методы? В чем путаница?
+    // function Man(name) {
+    //     this.name = name;
+    // }
+    // Man.prototype.age = 18;
+
+    // let viktor = new Man('Viktor');
+    // let dima = new Man('Dima');
+
+    // console.log(viktor.age); //18
+    // viktor.age = 20;
+    // console.log(viktor.age); //20 в объекте viktor
+    // console.log(dima.age); //20 нет 18 найдет в объекте prototype
+
+    // //Не примитив например массив
+    // function Man(name) {
+    //     this.name = name;
+    // }
+    // Man.prototype.children = []
+
+    // let viktor = new Man('Viktor');
+    // let dima = new Man('Dima');
+    // let misha = new Man('Misha');
+
+    // console.log(dima.children.length);
+    // console.log(viktor.children.length);
+    // dima.children.push(misha);
+    // console.log(dima.children.length);
+    // console.log(viktor.children.length);
+
+    // По
+    // default лучше устанавливать значение в конструкторе.
 </script>
