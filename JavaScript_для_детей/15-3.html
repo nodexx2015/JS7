@@ -34,8 +34,16 @@
         };
         // Обновляем позицию мяча соответственно его скорости
         Ball.prototype.move = function () {
-            this.x += this.xSpeed;
-            this.y += this.ySpeed;
+            if (this.xSpeed < 0) {
+                this.x += ((this.xSpeed * this.speed)/-this.xSpeed);
+            } else if (this.xSpeed > 0) {
+                this.x += ((this.xSpeed * this.speed)/this.xSpeed);
+            };
+            if (this.ySpeed < 0) {
+                this.y += ((this.ySpeed * this.speed)/-this.ySpeed);
+            } else if (this.ySpeed > 0) {
+                this.y += ((this.ySpeed * this.speed)/this.ySpeed);
+            };
             if (this.x < 0) {
                 this.xSpeed = this.speed;
             } else if (this.x > width) {
@@ -44,7 +52,7 @@
                 this.ySpeed = this.speed;
             } else if (this.y > height) {
                 this.ySpeed = -this.speed;
-            }
+            };
         };
         // Рисуем мяч в его текущей позиции
         Ball.prototype.draw = function () {
@@ -71,7 +79,13 @@
         };
         Ball.prototype.setSpeed = function (valSpeed, anySpeed) {
             if (!(anySpeed === undefined)) {
+                if (this.speed >= 2) {
                 this.speed += anySpeed;
+                } else if(this.speed = 1 && anySpeed > 0) {
+                this.speed += anySpeed;
+                } else if(this.speed = 1) {
+                    this.speed = 1;
+                };
             } else if (!(valSpeed === undefined)) {
                 this.speed = valSpeed;
             };
@@ -80,9 +94,15 @@
         };
         Ball.prototype.setRadius = function (anyRadius) {
             if (!(anyRadius === undefined)) {
+                if (this.radius >= 2) {
                 this.radius += anyRadius;
-            }
-        }
+                } else if(this.radius = 1 && anyRadius > 0) {
+                this.radius += anyRadius;
+                } else if(this.radius = 1) {
+                    this.radius = 1;
+                };
+            };
+        };
         // Создаем объект-мяч
         var ball = new Ball();
         // Объект для перевода кодов клавиш в названия действий

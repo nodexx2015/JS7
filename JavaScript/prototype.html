@@ -1,0 +1,16 @@
+<script>
+    let Ball = function () {
+        this.speed = 1;
+        this.xSpeed = this.speed;
+    };
+    Ball.prototype.move = function () {
+        if(true) {
+            this.speed = 5;
+            // this.xSpeed = this.speed;
+        };
+    };
+    let ball = new Ball();
+    ball.move();
+    // ball.__proto__.move();
+    console.log(ball);
+</script>
