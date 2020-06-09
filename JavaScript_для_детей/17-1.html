@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <canvas id="canvas" width="400" height="400"></canvas>
+    <canvas id="canvas" width="500" height="500"></canvas>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script>
         // configurate canvas
@@ -165,7 +165,7 @@
 
         // draw circle in position of apple
         Apple.prototype.draw = function () {
-            this.posotion.drawCircle("LimeGreen");
+            this.position.drawCircle("LimeGreen");
         };
 
         // transfer apple in random position
@@ -188,12 +188,12 @@
             apple.draw();
             drawBorder();
         }, 100);
-        setInterval(function () {
-            ctx.clearRect(0, 0, width, height);
-            ++score;
-            drawBorder();
-            drawScore();
-        }, 100);
+        // setInterval(function () {
+        //     ctx.clearRect(0, 0, width, height);
+        //     ++score;
+        //     drawBorder();
+        //     drawScore();
+        // }, 100);
 
         // convert codes of buttons in directions
         var directions = {
