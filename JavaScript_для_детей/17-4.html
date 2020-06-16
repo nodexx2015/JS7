@@ -101,12 +101,12 @@
 
         // draw a square for each segments of the snake's body
         Snake.prototype.draw = function () {
-                this.segments[0].drawSquare("green");
+            this.segments[0].drawSquare("green");
             for (var i = 1; i < this.segments.length; i++) {
-                if(!(i % 2)) {
-                this.segments[i].drawSquare("yellow");
+                if (!(i % 2)) {
+                    this.segments[i].drawSquare("yellow");
                 } else {
-                this.segments[i].drawSquare("blue");
+                    this.segments[i].drawSquare("blue");
                 }
             };
         };
@@ -133,6 +133,14 @@
             if (newHead.equal(apple.position)) {
                 score++;
                 apple.move();
+                // check position of snake don't have 
+                for (let i = 0; i < snake.segments.length; i++) {
+                    while (snake.segments[i].col == apple.position.col && snake.segments[i].row == apple.position
+                        .row) {
+                        apple.move();
+                    };
+                };
+                //...to equal position of apple
                 return animationTime -= 10;
             } else {
                 this.segments.pop();
@@ -181,11 +189,7 @@
         Apple.prototype.move = function () {
             var randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1;
             var randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;
-            for(var i = 2; i < snake.segments.length; i++) {
-                while(!(randomCol === snake.segments[i].col || randomRow === snake.segments[i].row)) {
             this.position = new Block(randomCol, randomRow);
-                }
-            }
         };
 
         // create object-snake and object apple
