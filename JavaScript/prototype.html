@@ -55,6 +55,36 @@
 
     // // По
     // // default лучше устанавливать значение в конструкторе.
+// ******************
+    // console.log(({}).prototype === ({}).__proto__);// error т.к. прототип только у функции
+
+    // function ITKamasutra () {}
+    // console.log(ITKamasutra.prototype === ITKamasutra.__proto__);
+
+    // function ITIncubator() {};
+    // function ITKamasutra() {};
+    // console.log(ITIncubator.__proto__ === ITKamasutra.__proto__);
+    // console.log(ITIncubator.prototype === ITKamasutra.prototype);
+
+    // let Component = (props) => {
+    //     return "<div>I don't know Prototype</div>"
+    // };
+    // console.log(Component.prototype === Object.prototype);
+    
+    // let age = 18;
+    // console.log(age.prototype === Number.prototype);
+    // console.log(age.__proto__ === Number.prototype);
+
+    // class Hacker {};
+    // console.log(Hacker.__proto__ === Function.prototype);
+
+    // function ITIncubator();
+    // console.log(ITIncubator.__proto__ === ???);
+
+    // const count = 12;
+    // console.log(count.__proto__ === ???);
+
+
 </script>
 
 </body>
