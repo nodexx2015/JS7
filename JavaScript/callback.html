@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+</head>
+
+<body>
+    <script>
+        // function first() {
+        //     console.log(1);
+        // }
+
+        // function second() {
+        //     console.log(2);
+        // }
+        // first();
+        // second();
+
+
+        // function first() {
+        //     setTimeout(function () {
+        //         console.log(1);
+        //     }, 2000);
+        // }
+
+        // function second() {
+        //     console.log(2);
+        // }
+        // first();
+        // second();
+
+
+        // function first(y) {
+        //     console.log(1);
+        //     y();
+        // }
+
+        // function second() {
+        //     console.log(2);
+        // }
+        // first(second);
+
+        // Как правило, программный код выполняется последовательно, только одна конкретная операция происходит в данный момент времени. Если функция first() зависит от результата выполнения другой функции second(), то first() должна дождаться пока нужная ей функция second() не завершит свою работу и не вернет результат и до тех пор пока это не произойдет, выполнение программы, по сути, будет остановлено с точки зрения пользователя.
+        // Cовременные компьютеры имеют процессоры с несколькими ядрами. Не нужно ничего ждать, вы можете передать следующую задачу свободному ядру процессора и когда она завершится, то сообщит вам об этом. Браузер имеет возможность выполнять различного рода задачи ассинхронно.
+        // JavaScript однопоточный(Main thread). Пример 
+        // Main thread: Render circles to canvas --> Display alert()
+        // Чтобы избежать подобных проблем, браузеры позволяют нам выполнять определенные операции асинхронно. Такие возможности, как Promises позволяют запустить некоторую операцию (например, получение картинки с сервера), и затем подождать пока операция не вернет результат, перед тем как начать выполнение другой задачи:
+        // Main thread: Task A                   Task B
+        //      Promise:      |__async operation__|
+        // Поскольку операция выполняется где-то отдельно, основной поток не блокируется, при выполнении асинхронных задач.
+
+        // function first(y) {
+        //     console.log(1);
+        //     y();
+        // }
+
+        // function second(a, b) {
+        //     console.log(a * b);
+        // }
+        // first(second(3, 100));
+
+        
+        // function first(y) {
+        //     console.log(1);
+        //     y();
+        // }
+
+        // function second(a, b) {
+        //     console.log(a * b);
+        // }
+        // first(function() {
+        //     second(3, 100);
+        // });
+    </script>
+</body>
+
+</html>
